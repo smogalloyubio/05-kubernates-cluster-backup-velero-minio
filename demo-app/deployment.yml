@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: velero-backup
+  namespace: demo-app
+  labels:
+    app: velero-backup
+spec:
+  replicas: 2
+  selector:
+    matchLabels:       
+      app: velero-backup
+  template:
+    metadata:
+      labels:
+        app: velero-backup
+    spec:
+      containers:
+      - name: velero-backup
+        image: rukevweubio/my-ecommerce-app:latest 
+        ports:
+        - containerPort: 80
